@@ -27,7 +27,7 @@
           $('div.ting-overlay-spinner-container').css("top", ($(window).height() - $('overlay-spinner').height()) / 2 + $(window).scrollTop() + "px");
           $('div.ting-overlay-spinner-container').css("left", ($(window).width() - $('overlay-spinner').width()) / 2 + $(window).scrollLeft() + "px");
           $('div.close-ting-search-spinner').css("top", ($(window).height() + 140) / 2 + $(window).scrollTop() + "px");
-          $('div.close-ting-search-spinner').css("left", ($(window).width() - 60) / 2 + $(window).scrollLeft() + "px");
+          $('div.close-ting-search-spinner').css("margin-left", - $('div.close-ting-search-spinner').innerWidth() / 2 + "px");
         }
       }
       // Append necessary html elements.
@@ -38,7 +38,7 @@
         if (killPageLoad == true) {
           if (navigator.appName == 'Microsoft Internet Explorer') {
             document.execCommand('Stop');
-          } 
+          }
           else {
             window.stop();
           }
@@ -52,15 +52,15 @@
         $('div.ting-overlay-spinner-container').css("left", $(window).width() / 2 + $(window).scrollLeft() + "px");
         $('div.ting-overlay-spinner-container').append(spinner.el);
         $('div.close-ting-search-spinner').css("top", ($(window).height() + 140) / 2 + $(window).scrollTop() + "px");
-        $('div.close-ting-search-spinner').css("left", ($(window).width() - 65) / 2 + $(window).scrollLeft() + "px");
+        $('div.close-ting-search-spinner').css("margin-left", - $('div.close-ting-search-spinner').innerWidth() / 2 + "px");
         // Disable writing on search field.
-        $('.block-search-form form input[name="search_block_form"]').blur(); 
+        $('.block-search-form form input[name="search_block_form"]').blur();
         // Show elements.
         $('.ting-search-spinner-placeholder-overlay').show();
         $('.close-ting-search-spinner').show();
         disable_scroll();
         return true;
-      });  
+      });
       // left: 37, up: 38, right: 39, down: 40,
       // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
       var keys = [37, 38, 39, 40];
@@ -69,7 +69,7 @@
         if (e.preventDefault) {
           e.preventDefault();
         }
-        e.returnValue = false;  
+        e.returnValue = false;
       }
       function keydown(e) {
         for (var i = keys.length; i--;) {
@@ -93,7 +93,7 @@
         if (window.removeEventListener) {
           window.removeEventListener('DOMMouseScroll', wheel, false);
         }
-        window.onmousewheel = document.onmousewheel = document.onkeydown = null;  
+        window.onmousewheel = document.onmousewheel = document.onkeydown = null;
       }
       // Cancel search when text is clicked.
       $('.close-ting-search-spinner').click(function () {
@@ -101,17 +101,17 @@
         $('.close-ting-search-spinner').hide();
         $('div.ting-overlay-spinner-container').replaceWith('<div class="ting-overlay-spinner-container"></div>');
         enable_scroll();
-        $('#search-block-form').trigger('submit', [true]);  
+        $('#search-block-form').trigger('submit', [true]);
       });
       // Cancel search hen ESC is pressed.
       $(document).keyup(function(e) {
-        if (e.keyCode == 27) { 
+        if (e.keyCode == 27) {
           $('.ting-search-spinner-placeholder-overlay').hide();
           $('.close-ting-search-spinner').hide();
           $('div.ting-overlay-spinner-container').replaceWith('<div class="ting-overlay-spinner-container"></div>');
           enable_scroll();
-          $('#search-block-form').trigger('submit', [true]);  
-        }  
+          $('#search-block-form').trigger('submit', [true]);
+        }
       });
     }
   }
